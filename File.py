@@ -11,3 +11,7 @@ for i in range(n):
     for j in range(l):
         if np.random.rand() < conversionRates[j]:
             x[i][j] = 1
+
+# Winners and losers tables.
+nPosReward = np.zeros(l)
+nNegReward = np.zeros(l)
