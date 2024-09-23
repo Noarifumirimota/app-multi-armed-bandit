@@ -25,6 +25,7 @@ for i in range(n):
         if randomBeta > maxRandom:
             maxRandom = randomBeta
             selected = j
+
     if x[i][selected] == i:
         nPosReward[selected] += 1
     else:
