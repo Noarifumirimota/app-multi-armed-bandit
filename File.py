@@ -12,7 +12,7 @@ for i in range(n):
         if np.random.rand() < conversionRates[j]:
             x[i][j] = 1
 
-# Winners and losers tables.
+# Winners and losers tables. How many times a specific slot machine returns 0 or 1 in previous rounds.
 nPosReward = np.zeros(l)
 nNegReward = np.zeros(l)
 
