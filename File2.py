@@ -1,26 +1,32 @@
+# Imports.
 import numpy as np
 
 # Set conversion rates & number of samples.
-conversionRates = [0.05, 0.12, 0.09]
-n = 1000
-l = len(conversionRates)
+conversionRates = [
+    0.08, 0.25, 0.25, 0.17, 0.11
+]
+N = 100
+d = len(conversionRates)
 
 # Data set.
-x = np.zeros((n, l))
-for i in range(n):
-    for j in range(l):
+x = np.zeros((N, d))
+for i in range(N):
+    for j in range(d):
         if np.random.rand() < conversionRates[j]:
             x[i][j] = 1
 
-# Winners and losers tables. How many times a specific slot machine returns 0 or 1 in previous rounds.
-nPosReward = np.zeros(l)
-nNegReward = np.zeros(l)
+print(x)
 
-# Thompson.
-for i in range(n):
+# Winners and losers tables(for beta). How many times a specific slot machine return positive or negative.
+nPosReward = np.zeros(d)
+nNegReward = np.zeros(d)
+
+# Thompson stuff.
+for i in range(N):
     selected = 0
     maxRandom = 0
-    for j in range(l):
+    for j in range(d):
+        # Beta.
         randomBeta = np.random.beta(nPosReward[j] + 1, nNegReward[j] + 1)
         if randomBeta > maxRandom:
             maxRandom = randomBeta
@@ -31,8 +37,8 @@ for i in range(n):
     else:
         nNegReward[selected] += 1
 
-# Print best slot machine.
+# Best machine.
 nSelected = nPosReward + nNegReward
-for i in range(l):
+for i in range(d):
     print('Machine: ' + str(i + 1) + ' was selected: ' + str(nSelected[i]) + ' times.')
 print('Best machine is machine number: ' + str(np.argmax(nSelected) + 1))
