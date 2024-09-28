@@ -11,8 +11,8 @@ d = len(conversionRates)
 
 # Data set.
 x = np.zeros((N, d))
-print('\n >> ' + conversionRates)
+print(conversionRates.columns.to_numpy())
 # for i in range(N):
-#     for j in range(N):
+#     for j in range(d):
 #         if np.random.rand() < conversionRates[j]:
 #             x[i][j] = 1
