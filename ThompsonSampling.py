@@ -21,7 +21,6 @@ for i in range(N):
 nPosReward = np.zeros(d)
 nNegReward = np.zeros(d)
 
-# Thompson.
 # Thompson stuff.
 for i in range(N):
     selected = 0
